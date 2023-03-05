@@ -1,14 +1,14 @@
 import Onboarding from "../components/Onboarding";
 import { useState, useEffect } from "react";
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const [onboardStatus, setStatus] = useState(false);
 
   useEffect(() => {
-    const apiKeyValue = JSON.parse(localStorage.getItem("octoAPI"));
+    const apiKeyValue = localStorage.getItem("octoAPI");
     if (apiKeyValue) {
-      setLoading(false);
+      return setStatus(true);
     } else {
-      setLoading(true);
+      return setStatus(false);
     }
   }, []);
   return <Onboarding />;
